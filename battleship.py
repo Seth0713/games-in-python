@@ -22,8 +22,6 @@ bateau_y = alea_col(plateau)
 print bateau_x 
 print bateau_y 
 
-# A partir d'ici tout le reste doit etre dans votre boucle for !
-# N'oubliez pas l'indentation !
 for tour in range(0,4):
     tir_x = int(raw_input("Quelle ligne ?"))
     tir_y = int(raw_input("Quelle colonne ?"))
