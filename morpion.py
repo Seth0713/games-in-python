@@ -1,17 +1,14 @@
 board = []
 
-def create_board(case):
-               
+def create_board(case):               
     for x in range(0, case):
         board.append([" --"] * case)  
         board.append(["| ."] * case + ["|"])
     board.append([" --"] * case)
     
-        
 def see_board(board):
     for line in board:
-        board = (" ").join(line)
-    
+        board = (" ").join(line)    
         print (board)
     return board
 
