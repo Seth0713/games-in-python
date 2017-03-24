@@ -4,14 +4,18 @@ def create_board(case):
                
     for x in range(0, case):
         board.append([" --"] * case)  
-        board.append(["|  "] * case)
+        board.append(["| ."] * case + ["|"])
     board.append([" --"] * case)
+    
         
 def see_board(board):
     for line in board:
-        print (" ".join(line))
+        board = (" ").join(line)
+    
+        print (board)
+    return board
 
-nbcase = int(input("How many cases : "))
+nbcase = int(input("How many cases do you want for the game ? : "))
 
 create_board(nbcase)
 
