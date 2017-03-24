@@ -1,4 +1,4 @@
-### Create little games for learn the language Python. You can propose games or contribuate at the games already in the list of developement. The games can be in command line or in grafiphical interface.
+### Create little games to learn the Python language. You can propose games or already contribute at the games in the list of developement. The games can be in command line or with a graphical interface.
 
 ### List of games :
 - Battleship
