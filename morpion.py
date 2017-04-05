@@ -4,9 +4,14 @@ class Player(object):
         self.victoire = victoire
 
 board = []
+global turn
+turn = 0
 letter = ["   A"," B"," C"," D"," E"," F"," G"," H"," I"," J"]
 letter2 = []
 number = ["1","2","3","4","5","6","7","8","9"]
+
+player_1 = Player(input(' Player 1 / Enter your name : '),0)
+player_2 = Player(input(' Player 2 / Enter your name : '),0)
 
 def create_board(case):
  
@@ -33,21 +38,42 @@ def see_board(board):
     print ("\n")
     return board
 
+def start_game():
+    
+    print (player_1)
+    see_board(board)
+
 def choose_case():
     nbcase = int(input("\n How many cases do you want for the game, choose a number between 1 and 9 ? : "))
     if nbcase >=1 and nbcase <=9:
         create_board(nbcase)
-        see_board(board)
+        start_game()
     else:
         print ("\n Becareful, your entered is not correct")
         choose_case()
-        
-    
 
-player_1 = Player(input(' Player 1 / Enter your name : '),0)
-player_2 = Player(input(' Player 2 / Enter your name : '),0)
+def start_game():
+    global turn
+    if turn == 0:
+        print ("\n\n////////////// PLAYER 1 //////////////")
+        see_board(board)
+        choice_case = print ( player_1.nom+input(" Choose a case (for exemple : A2 or C1) : "))
+        turn = 1
+        start_game()
+    else:
+        print ("\n\n////////////// PLAYER 2 //////////////")
+        see_board(board)
+        choice_case = print ( player_2.nom+input(" Choose a case (for exemple : A2 or C1) : "))
+        turn = 0
+        start_game()     
 
 choose_case()
+
+
+
+    
+    
+
     
     
 
