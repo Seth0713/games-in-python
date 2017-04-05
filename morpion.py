@@ -1,7 +1,7 @@
 class Player(object):
-    def __init__(self, nom, victoire):
-        self.nom = nom
-        self.victoire = victoire
+    def __init__(self, name, victory):
+        self.name = name
+        self.victory = victory
 
 board = []
 global turn
@@ -57,19 +57,17 @@ def start_game():
     if turn == 0:
         print ("\n\n////////////// PLAYER 1 //////////////")
         see_board(board)
-        choice_case = print ( player_1.nom+input(" Choose a case (for exemple : A2 or C1) : "))
+        choice_case = print ( player_1.name+input(" Choose a case (for exemple : A2 or C1) : "))
         turn = 1
         start_game()
     else:
         print ("\n\n////////////// PLAYER 2 //////////////")
         see_board(board)
-        choice_case = print ( player_2.nom+input(" Choose a case (for exemple : A2 or C1) : "))
+        choice_case = print ( player_2.name+input(" Choose a case (for exemple : A2 or C1) : "))
         turn = 0
         start_game()     
 
 choose_case()
-
-
 
     
     
