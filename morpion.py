@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 class Player(object):
     def __init__(self, name, victory):
         self.name = name
@@ -55,19 +57,25 @@ def choose_case():
 def start_game():
     global turn
     if turn == 0:
-        print ("\n\n////////////// PLAYER 1 //////////////")
+        print ("\n\n////////////// PLAYER 1 : "+player_1.name+" //////////////")
         see_board(board)
-        choice_case = print ( player_1.name+input(" Choose a case (for exemple : A2 or C1) : "))
+        choice_case = input(" Choose a case (for exemple : A2 or C1) : ")
         turn = 1
         start_game()
     else:
-        print ("\n\n////////////// PLAYER 2 //////////////")
+        print ("\n\n////////////// PLAYER 2 : "+player_2.name+" //////////////")
         see_board(board)
-        choice_case = print ( player_2.name+input(" Choose a case (for exemple : A2 or C1) : "))
+        choice_case = input(" Choose a case (for exemple : A2 or C1) : ")
         turn = 0
         start_game()     
 
 choose_case()
+
+
+
+    
+    
+
 
     
     
