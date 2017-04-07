@@ -1,4 +1,5 @@
-#! /usr/bin/env python3
+#! /usr/bin/python3
+# -*-coding:UTF-8 -*
 
 class Player(object):
     def __init__(self, name, victory):
@@ -46,7 +47,10 @@ def start_game():
     see_board(board)
 
 def choose_case():
-    nbcase = int(input("\n How many cases do you want for the game, choose a number between 1 and 9 ? : "))
+    try:
+        nbcase = int(input("\n How many cases do you want for the game, choose a number between 1 and 9 ? : "))
+    except :
+        choose_case()
     if nbcase >=1 and nbcase <=9:
         create_board(nbcase)
         start_game()
@@ -60,6 +64,7 @@ def start_game():
         print ("\n\n////////////// PLAYER 1 : "+player_1.name+" //////////////")
         see_board(board)
         choice_case = input(" Choose a case (for exemple : A2 or C1) : ")
+        board[3][2]="| X"
         turn = 1
         start_game()
     else:
@@ -74,6 +79,8 @@ choose_case()
 
 
     
+    
+
     
 
 
