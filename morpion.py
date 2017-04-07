@@ -60,11 +60,27 @@ def choose_case():
 
 def start_game():
     global turn
+    col = 0
     if turn == 0:
         print ("\n\n////////////// PLAYER 1 : "+player_1.name+" //////////////")
         see_board(board)
         choice_case = input(" Choose a case (for exemple : A2 or C1) : ")
-        board[3][2]="| X"
+        data = list(choice_case)
+        print (data)
+        alpha = ["A","B","C","D","E","F","G","H","I","J"]
+        for i in range(9):
+            if data[0]==alpha[i]:
+                col = i+1
+                print (col)
+                print (alpha[i])
+            
+
+        if data[1]=="1":
+            line=1
+        elif data[1]=="2":
+            line=3
+
+        board[line][col]="| X"
         turn = 1
         start_game()
     else:
@@ -75,17 +91,6 @@ def start_game():
         start_game()     
 
 choose_case()
-
-
-
-    
-    
-
-    
-
-
-    
-    
 
     
     
