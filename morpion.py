@@ -7,7 +7,8 @@ class Player(object):
         self.victory = victory
 
 board = []
-global turn
+global turn, nbcase
+nbcase = 0
 turn = 0
 letter = ["   A"," B"," C"," D"," E"," F"," G"," H"," I"," J"]
 letter2 = []
@@ -46,19 +47,21 @@ def start_game():
     print (player_1)
     see_board(board)
 
-def choose_case():
+def begin(): #Choose number of cases
+    global nbcase
     try:
-        nbcase = int(input("\n How many cases do you want for the game, choose a number between 1 and 9 ? : "))
+        nbcase = int(input("\n How many cases do you want for the game, choose a number between 3 and 9 ? : "))
     except :
-        choose_case()
-    if nbcase >=1 and nbcase <=9:
+        begin()
+    if nbcase >=3 and nbcase <=9:
         create_board(nbcase)
         start_game()
     else:
         print ("\n Becareful, your entered is not correct")
-        choose_case()
+        begin()
 
 def start_game():
+    print (nbcase)
     global turn
     col = 0
     if turn == 0:
@@ -68,7 +71,8 @@ def start_game():
         data = list(choice_case)
         print (data)
         alpha = ["A","B","C","D","E","F","G","H","I","J"]
-        for i in range(9):
+
+        for i in range(nbcase):
             if data[0]==alpha[i]:
                 col = i+1
                 print (col)
@@ -90,7 +94,7 @@ def start_game():
         turn = 0
         start_game()     
 
-choose_case()
+begin()
 
     
     
