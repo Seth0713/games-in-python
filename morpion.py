@@ -42,8 +42,7 @@ def see_board(board):
     print ("\n")
     return board
 
-def start_game():
-    
+def start_game():  
     print (player_1)
     see_board(board)
 
