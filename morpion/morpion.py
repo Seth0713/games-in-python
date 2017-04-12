@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 # -*-coding:UTF-8 -*
 
-from Classes import Player
+from classes import Player
 
 board = []
 win = False
