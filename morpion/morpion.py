@@ -7,9 +7,9 @@ board = []
 win = False
 nbcase = 0
 turn = 0
-letter = ["   A"," B"," C"," D"," E"," F"," G"," H"," I"," J"]
+letter = ["   A"," B"," C"]
 letter2 = []
-number = ["1","2","3","4","5"]
+number = ["1","2","3"]
 
 player_1 = Player(input(' Player 1 / Enter your name : '),0,0,0)
 player_2 = Player(input(' Player 2 / Enter your name : '),0,0,0)
@@ -41,24 +41,27 @@ def see_board(board):
 
 def begin(): #Choose number of cases
     global nbcase
-    try:
-        nbcase = int(input("\n How many cases do you want for the game, choose a number between 3 and 5 ? : "))
-    except :
-        begin()
-    if nbcase >=3 and nbcase <=5:
-        create_board(nbcase)
-        print ("\n You must align {0} form for win".format(nbcase))
-        start_game()
-    else:
-        print ("\n Becareful, your entered is not correct")
-        begin()
-
+    nbcase = 3    
+    create_board(3)
+    print ("\n You must align {0} form for win".format(nbcase))
+    start_game()
+    
 
 def read_board(): #for determinate if a player has win
     global win
-    print(board)
-    #win = True 
+    if board[1][1]=="| X" and board[1][2]=="| X" and board[1][3]=="| X" \
+        or board[3][1]=="| X" and board[3][2]=="| X" and board[3][3]=="| X" \
+        or board[5][1]=="| X" and board[5][2]=="| X" and board[5][3]=="| X" \
+        or board[1][1]=="| X" and board[3][1]=="| X" and board[5][1]=="| X" \
+        or board[1][2]=="| X" and board[3][2]=="| X" and board[5][2]=="| X" \
+        or board[1][3]=="| X" and board[3][3]=="| X" and board[5][3]=="| X" \
+        or board[1][1]=="| X" and board[3][2]=="| X" and board[5][3]=="| X" \
+        or board[1][3]=="| X" and board[3][2]=="| X" and board[5][1]=="| X":
 
+        see_board(board)
+        win = True
+      
+    return win
 
 def start_game():
     global turn
@@ -68,7 +71,7 @@ def start_game():
         see_board(board)
         choice_case = input(" Choose a case (for exemple : A2 or C1) : ")
         data = list(choice_case)
-        alpha = ["A","B","C","D","E","F","G","H","I","J"]
+        alpha = ["A","B","C"]
 
         for i in range(nbcase):                     
                 
@@ -77,9 +80,11 @@ def start_game():
                 
         for j in range(nbcase):
             if data[1]==number[j]:
-                line = int(number[j])+(int(number[j])-1)                       
+                line = int(number[j])+(int(number[j])-1)
+                print("line",line)
         
         board[line][col]="| X"
+        
         read_board()
             
         if win==True:
@@ -92,7 +97,7 @@ def start_game():
         see_board(board)
         choice_case = input(" Choose a case (for exemple : A2 or C1) : ")
         data = list(choice_case)
-        alpha = ["A","B","C","D","E","F","G","H","I","J"]
+        alpha = ["A","B","C"]
 
         for i in range(nbcase):
             if data[0].upper()==alpha[i]:
