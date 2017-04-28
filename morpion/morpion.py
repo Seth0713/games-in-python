@@ -1,123 +1,42 @@
 #! /usr/bin/python3
 # -*-coding:UTF-8 -*
 
-from classes import Player
+from classes import *
 
-board = []
+plateau = Board()
+player_1 = Player(input(' Player 1 / Enter your name : '),0,0,0,True)
+player_2 = Player(input(' Player 2 / Enter your name : '),0,0,0,False)
+
+print ("\n You must align {0} form for win, may the best win !".format(plateau.nbcase))
 win = False
-nbcase = 0
-turn = 0
-letter = ["   A"," B"," C"]
-letter2 = []
-number = ["1","2","3"]
 
-player_1 = Player(input(' Player 1 / Enter your name : '),0,0,0)
-player_2 = Player(input(' Player 2 / Enter your name : '),0,0,0)
+def engine(name, sign, turn1, turn2):
+    print ("\n ||||||||||||||||||||||||||||||",name,"||||||||||||||||||||||||||||||")        
+    plateau.see(plateau)
+    choice_case = list(input("\n"+name+" choose a place (for exemple : A2 or C1) : "))
 
-def create_board(case):
-    
-    for x in range(0, case):
-        board.append([" "]+[" ——"] * case)  
-        board.append([number[x]]+["|  "] * case + ["|"]+[number[x]])
-    board.append([" "]+[" ——"] * case)
-
-    for x in range(0, case):
-        letter2.append(letter[x])    
-        
-def showletter():
-    showletter = ("  ").join(letter2)
-    print (" "+showletter)
-    return showletter
-   
-def see_board(board):
-    print ("\n")
-    showletter()
-    for line in board:
-        board = (" ").join(line)    
-        print (board)
-    showletter()
-    print ("\n")
-    return board
-
-def begin(): #Choose number of cases
-    global nbcase
-    nbcase = 3    
-    create_board(3)
-    print ("\n You must align {0} form for win".format(nbcase))
-    start_game()
-    
-
-def read_board(): #for determinate if a player has win
-    global win
-    if board[1][1]=="| X" and board[1][2]=="| X" and board[1][3]=="| X" \
-        or board[3][1]=="| X" and board[3][2]=="| X" and board[3][3]=="| X" \
-        or board[5][1]=="| X" and board[5][2]=="| X" and board[5][3]=="| X" \
-        or board[1][1]=="| X" and board[3][1]=="| X" and board[5][1]=="| X" \
-        or board[1][2]=="| X" and board[3][2]=="| X" and board[5][2]=="| X" \
-        or board[1][3]=="| X" and board[3][3]=="| X" and board[5][3]=="| X" \
-        or board[1][1]=="| X" and board[3][2]=="| X" and board[5][3]=="| X" \
-        or board[1][3]=="| X" and board[3][2]=="| X" and board[5][1]=="| X":
-
-        see_board(board)
-        win = True
-      
-    return win
-
-def start_game():
-    global turn
-    col = 0
-    if turn == 0:
-        print ("\n\n////////////// PLAYER 1 : "+player_1.name+" //////////////")
-        see_board(board)
-        choice_case = input(" Choose a case (for exemple : A2 or C1) : ")
-        data = list(choice_case)
-        alpha = ["A","B","C"]
-
-        for i in range(nbcase):                     
-                
-            if data[0].upper()==alpha[i]:
-                col = i+1
-                
-        for j in range(nbcase):
-            if data[1]==number[j]:
-                line = int(number[j])+(int(number[j])-1)
-                print("line",line)
-        
-        board[line][col]="| X"
-        
-        read_board()
-            
-        if win==True:
-            print (" {0} win the party".format(player_1.name))            
-        else:
-            turn = 1
-            start_game()
+    if choice_case not in plateau.choicelist:
+        plateau.write(choice_case[0],choice_case[1],sign)
+        plateau.choicelist.append(choice_case) 
+        player_1.turn=turn1
     else:
-        print ("\n\n////////////// PLAYER 2 : "+player_2.name+" //////////////")
-        see_board(board)
-        choice_case = input(" Choose a case (for exemple : A2 or C1) : ")
-        data = list(choice_case)
-        alpha = ["A","B","C"]
+        print('\n\n\n \\\\\ BECAREFUL THE PLACE IS NOT EMPTY? CHOOSE A NEW PLACE \\\\\ ')
+        player_1.turn=turn2 
 
-        for i in range(nbcase):
-            if data[0].upper()==alpha[i]:
-                col = i+1
+while win==False:
+    if player_1.turn==True:
+        engine(player_1.name,'| X',False,True)     
+    else:
+        engine(player_2.name,'| O',True,False)
                 
-        for j in range(nbcase):
-            if data[1]==number[j]:
-                line = int(number[j])+(int(number[j])-1)                       
         
-        board[line][col]="| O"      
+#controler plateau
+#Message pour la fin de partie
+#incrémenter victoire, défaite ou égalité
+#enregistrer résultats dans un fichier 
 
-        read_board()
-            
-        if win==True:
-            print (" {0} win the party".format(player_2.name))            
-        else:
-            turn = 0
-            start_game()
 
-begin()
+
 
 
     
