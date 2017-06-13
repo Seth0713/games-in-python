@@ -39,15 +39,17 @@ class Board(object):
         self.board[int(self.line)][int(self.col)]=self.sign  
 
     def control(self):
-        if board[1][1]=="| X" and board[1][2]=="| X" and board[1][3]=="| X" \
-        or board[3][1]=="| X" and board[3][2]=="| X" and board[3][3]=="| X" \
-        or board[5][1]=="| X" and board[5][2]=="| X" and board[5][3]=="| X" \
-        or board[1][1]=="| X" and board[3][1]=="| X" and board[5][1]=="| X" \
-        or board[1][2]=="| X" and board[3][2]=="| X" and board[5][2]=="| X" \
-        or board[1][3]=="| X" and board[3][3]=="| X" and board[5][3]=="| X" \
-        or board[1][1]=="| X" and board[3][2]=="| X" and board[5][3]=="| X" \
-        or board[1][3]=="| X" and board[3][2]=="| X" and board[5][1]=="| X":
+        if self.board[1][1]=="| X" and self.board[1][2]=="| X" and self.board[1][3]=="| X" \
+        or self.board[3][1]=="| X" and self.board[3][2]=="| X" and self.board[3][3]=="| X" \
+        or self.board[5][1]=="| X" and self.board[5][2]=="| X" and self.board[5][3]=="| X" \
+        or self.board[1][1]=="| X" and self.board[3][1]=="| X" and self.board[5][1]=="| X" \
+        or self.board[1][2]=="| X" and self.board[3][2]=="| X" and self.board[5][2]=="| X" \
+        or self.board[1][3]=="| X" and self.board[3][3]=="| X" and self.board[5][3]=="| X" \
+        or self.board[1][1]=="| X" and self.board[3][2]=="| X" and self.board[5][3]=="| X" \
+        or self.board[1][3]=="| X" and self.board[3][2]=="| X" and self.board[5][1]=="| X":
 
-            see_board(board)
             win = True
+            
+
+
 
