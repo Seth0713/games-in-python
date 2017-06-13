@@ -20,14 +20,19 @@ def engine(name, sign, turn1, turn2):
         plateau.choicelist.append(choice_case) 
         player_1.turn=turn1
     else:
-        print('\n\n\n \\\\\ BECAREFUL THE PLACE IS NOT EMPTY? CHOOSE A NEW PLACE \\\\\ ')
+        print('\n\n\n \\\\\ BECAREFUL THE PLACE IS NOT EMPTY ? CHOOSE AN ANOTHER PLACE \\\\\ ')
         player_1.turn=turn2 
 
 while win==False:
     if player_1.turn==True:
-        engine(player_1.name,'| X',False,True)     
+        
+        engine(player_1.name,'| X',False,True)
+        plateau.control()
     else:
         engine(player_2.name,'| O',True,False)
+print(win)
+
+    
                 
         
 #controler plateau
