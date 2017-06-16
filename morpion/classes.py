@@ -2,12 +2,13 @@
 # -*-coding:UTF-8 -*
 
 class Player(object):
-    def __init__(self, name, victory, defeat, equality, turn):
+    def __init__(self, name, victory, defeat, equality, turn, win):
         self.name = name
         self.victory = victory
         self.defeat = defeat
         self.equality = equality
-        self.turn = turn            
+        self.turn = turn
+        self.win = win
         
 class Board(object):       
     def __init__(self):
@@ -16,6 +17,7 @@ class Board(object):
         self.letter = ["A","B","C"]
         self.board = []
         self.choicelist = []
+        self.win = False
 
         for x in range(0, self.nbcase):
             self.board.append([" "]+[" ——"] * self.nbcase)
@@ -38,18 +40,20 @@ class Board(object):
                 self.line = i+(i+1)        
         self.board[int(self.line)][int(self.col)]=self.sign  
 
-    def control(self):
-        if self.board[1][1]=="| X" and self.board[1][2]=="| X" and self.board[1][3]=="| X" \
-        or self.board[3][1]=="| X" and self.board[3][2]=="| X" and self.board[3][3]=="| X" \
-        or self.board[5][1]=="| X" and self.board[5][2]=="| X" and self.board[5][3]=="| X" \
-        or self.board[1][1]=="| X" and self.board[3][1]=="| X" and self.board[5][1]=="| X" \
-        or self.board[1][2]=="| X" and self.board[3][2]=="| X" and self.board[5][2]=="| X" \
-        or self.board[1][3]=="| X" and self.board[3][3]=="| X" and self.board[5][3]=="| X" \
-        or self.board[1][1]=="| X" and self.board[3][2]=="| X" and self.board[5][3]=="| X" \
-        or self.board[1][3]=="| X" and self.board[3][2]=="| X" and self.board[5][1]=="| X":
-
-            win = True
+    def control(self, sign):
+        self.sign = sign
+                        
+        if self.board[1][1]==self.sign and self.board[1][2]==self.sign and self.board[1][3]==self.sign \
+        or self.board[3][1]==self.sign and self.board[3][2]==self.sign and self.board[3][3]==self.sign \
+        or self.board[5][1]==self.sign and self.board[5][2]==self.sign and self.board[5][3]==self.sign \
+        or self.board[1][1]==self.sign and self.board[3][1]==self.sign and self.board[5][1]==self.sign \
+        or self.board[1][2]==self.sign and self.board[3][2]==self.sign and self.board[5][2]==self.sign \
+        or self.board[1][3]==self.sign and self.board[3][3]==self.sign and self.board[5][3]==self.sign \
+        or self.board[1][1]==self.sign and self.board[3][2]==self.sign and self.board[5][3]==self.sign \
+        or self.board[1][3]==self.sign and self.board[3][2]==self.sign and self.board[5][1]==self.sign:
+            return True
             
-
-
+            
+class Control(Player,Board):
+    pass
 
