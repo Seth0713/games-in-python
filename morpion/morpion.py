@@ -4,8 +4,8 @@
 from classes import *
 
 plateau = Board()
-player_1 = Player(input(' Player 1 / Enter your name : '),0,0,0,True)
-player_2 = Player(input(' Player 2 / Enter your name : '),0,0,0,False)
+player_1 = Player(input(' Player 1 / Enter your name : '),0,0,0,True,False)
+player_2 = Player(input(' Player 2 / Enter your name : '),0,0,0,False,False)
 
 print ("\n You must align {0} form for win, may the best win !".format(plateau.nbcase))
 win = False
@@ -23,24 +23,36 @@ def engine(name, sign, turn1, turn2):
         print('\n\n\n \\\\\ BECAREFUL THE PLACE IS NOT EMPTY ? CHOOSE AN ANOTHER PLACE \\\\\ ')
         player_1.turn=turn2 
 
-while win==False:
-    if player_1.turn==True:
-        
-        engine(player_1.name,'| X',False,True)
-        plateau.control()
-    else:
-        engine(player_2.name,'| O',True,False)
-print(win)
 
+def main():
+    while plateau.win==False:
+        if player_1.turn==True:
+        
+            engine(player_1.name,'| X',False,True)
+            if plateau.control('| X') is True:
+                print (plateau.win)
+                again = input("Good you win, can you play again ? (Y or N) : ")
+                if again=="Y":
+                    main()
+              
+        else:
+            engine(player_2.name,'| O',True,False)
+    print(win)
+
+main()
     
                 
-        
-#controler plateau
 #Message pour la fin de partie
 #incrémenter victoire, défaite ou égalité
-#enregistrer résultats dans un fichier 
+#enregistrer résultats dans un fichier
+#Debugger
 
 
+
+
+
+    
+    
 
 
 
