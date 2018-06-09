@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 print ("Labyrinthes existants :")
 print ("1 - facile.")
 print ("2 - prison.")
