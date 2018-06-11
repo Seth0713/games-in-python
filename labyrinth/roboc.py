@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+game = "on"
+
 print ("Labyrinthes existants :")
 print ("1 - facile.")
 print ("2 - prison.")
@@ -16,13 +18,15 @@ if check_save is not None:
 choix = input ("\nEntrez un numéro de labyrinthe pour commencer à jouer : ")
 
 if choix=='1':
-    carte = open("cartes/facile.txt", "r")
-    print("\n"+carte.read())
+    carte = "cartes/facile.txt"
 else:
-        carte = open("cartes/prison.txt", "r")   
-        print("\n"+carte.read())
+    carte = "cartes/prison.txt" 
+    
 
-mouvement = input("\n>> ")
+while game=="on":
+    active_carte = open(carte, "r")
+    print("\n"+active_carte.read())
+    mouvement = input("\n>> ")
     
     
 
