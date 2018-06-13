@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 game = "on"
+fichier = []
 
 print ("Labyrinthes existants :")
 print ("1 - facile.")
@@ -24,8 +25,16 @@ else:
     
 
 while game=="on":
+    
     active_carte = open(carte, "r")
-    print("\n"+active_carte.read())
+    f = active_carte.read()
+    print (f)
+    for i in f:
+        fichier.append(i)
+   # print (fichier)
+    print (fichier[22])
+    
+    #print("\n"+active_carte.read())
     mouvement = input("\n>> ")
     
     
