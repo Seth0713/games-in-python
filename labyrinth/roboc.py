@@ -2,6 +2,8 @@
 
 game = "on"
 fichier = []
+countX = 0
+nb = 0
 
 print ("Labyrinthes existants :")
 print ("1 - facile.")
@@ -31,11 +33,18 @@ while game=="on":
     print (f)
     for i in f:
         fichier.append(i)
-   # print (fichier)
-    print (fichier[22])
-    
-    #print("\n"+active_carte.read())
+        nb+=1
+        if i=="X":
+            countX=nb
+    print (countX) 
+ 
     mouvement = input("\n>> ")
-    
+
+    if mouvement=="d":
+        print ("aller à droite")
+        nb = 0
+    elif mouvement=="g":
+        print ("aller à gauche")
+        nb = 0
     
 
